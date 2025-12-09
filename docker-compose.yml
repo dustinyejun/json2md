@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  json2md:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: json2md:latest
+    container_name: json2md
+    ports:
+      - "8000:8000"
+    volumes:
+      # 挂载配置文件（可选，如需自定义配置）
+      - ./config.yaml:/app/config.yaml:ro
+      # 持久化日志目录
+      - ./logs:/app/logs
+      # 临时文件目录（可选）
+      - ./temp:/app/temp
+    environment:
+      - TZ=Asia/Shanghai
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - json2md-network
+
+networks:
+  json2md-network:
+    driver: bridge

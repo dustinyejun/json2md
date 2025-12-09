@@ -1,0 +1,41 @@
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# 日志文件
+*.log
+logs/
+
+# 临时文件
+temp/
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# 文档
+README.md
+
+# 脚本
+start.sh
+
+# 测试
+tests/
+test_*.py
+*_test.py
+
+# 其他
+.DS_Store
