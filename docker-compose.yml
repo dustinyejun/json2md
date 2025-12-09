@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   json2md:
     build:
@@ -8,7 +6,7 @@ services:
     image: json2md:latest
     container_name: json2md
     ports:
-      - "8000:8000"
+      - "8001:8000"
     volumes:
       # 挂载配置文件（可选，如需自定义配置）
       - ./config.yaml:/app/config.yaml:ro
