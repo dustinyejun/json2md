@@ -63,7 +63,7 @@ class MarkdownConverter:
             element: 单个元素对象
         """
         element_type = element.get("type", "")
-        text = element.get("text", "").strip()
+        text = (element.get("text") or "").strip()
         
         if not text:
             return
@@ -126,7 +126,7 @@ class MarkdownConverter:
         
         Note: 这是一个简化实现,实际的表格解析需要根据Unstructured API的具体响应格式调整
         """
-        text = element.get("text", "")
+        text = element.get("text") or ""
         metadata = element.get("metadata", {})
         
         # 如果上一个不是表格,添加空行
@@ -142,7 +142,7 @@ class MarkdownConverter:
     
     def _add_image(self, element: Dict[str, Any]):
         """添加图片引用"""
-        text = element.get("text", "")
+        text = element.get("text") or ""
         metadata = element.get("metadata", {})
         
         # 尝试从元数据获取图片路径
